@@ -9,5 +9,5 @@
 
 ## forever
 <code>
-	forever start ./node_modules/http-server/bin/http-server -a localhost -p 9090 -c-1 ./app 
+	forever start ./node_modules/http-server/bin/http-server -a localhost -p 9090 -c-1 ./app
 <code>
