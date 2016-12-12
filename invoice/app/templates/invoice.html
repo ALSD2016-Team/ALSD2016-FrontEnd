@@ -27,7 +27,7 @@
                                 <div class="form-group date">
                                     <label for="invoicetime">時間</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.time" is-open="isDatePickerOpen" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-change="onDateTimeChange()" readonly>
+                                        <input type="text" id="dateInput" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.time" is-open="isDatePickerOpen" datepicker-options="dateOptions" ng-required="true" ng-change="onDateTimeChange()" >
                                         <span class="input-group-btn">
 							            	<button type="button" class="btn btn-default" ng-click="openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
 							        	</span>
@@ -81,11 +81,11 @@
                             </div>
                         </div>
                         <div class="action">
-                            <button class="btn btn-info btn-orange" type="submit" ng-click="showInvoiceResult()">預覽</button>
+                            <button class="btn btn-info btn-orange" type="submit" id="button-preview" ng-click="showInvoiceResult()">預覽</button>
                             <button class="btn btn-default" type="submit" ng-click="clearInvoiceResult()">清除</button>
                         </div>
                     </div>
-                    <div class="invoice-result" ng-class="{'result-show': isResultShow}">
+                    <div class="invoice-result" id="invoice-result" ng-class="{'result-show': isResultShow}">
                         <div class="result-wrapper">
                             <div class="invoice-title">
                                 <span>統</span><span>一</span>
