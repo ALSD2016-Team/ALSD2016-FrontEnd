@@ -3,7 +3,7 @@
         <div class="invoice-content">
             <div class="invoice-topbar">
                 <div class="topbar-item" ng-click="changeInvoiceType('THREE')">三聯式</div>
-                <div class="topbar-item" ng-click="changeInvoiceType('TWO')">二聯式</div>
+                <div class="topbar-item" id="DUI_button" ng-click="changeInvoiceType('TWO')">二聯式</div>
                 <div class="switcher" ng-class="{'right': invoiceType == 'TWO', 'left': invoiceType == 'THREE'}"></div>
             </div>
             <div class="invoice-info">
@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <label for="tax-rate">稅率</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="tax-rate" placeholder="請輸入稅率" ng-model="data.taxRate" ng-change="onTaxRateChange()">
+                                        <input type="text" class="form-control" id="TUI_taxRate" placeholder="請輸入稅率" ng-model="data.taxRate" ng-change="onTaxRateChange()">
                                         <div class="input-group-addon">%</div>
                                     </div>
                                 </div>
@@ -64,15 +64,15 @@
                             <div class="input-wrapper dollar">
                                 <div class="form-group" ng-class="{'has-error': isItemNameEmpty}">
                                     <label for="item-name">品名</label>
-                                    <input type="text" class="form-control" id="item-name" placeholder="請輸入品名" ng-model="data.itemName">
+                                    <input type="text" class="form-control" id="TUI_itemName" placeholder="請輸入品名" ng-model="data.itemName">
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': isItemNumberEmpty}">
                                     <label for="item-number">數量</label>
-                                    <input type="text" class="form-control" id="item-number" placeholder="請輸入數量" ng-model="data.itemNumber" ng-change="onItemChange()">
+                                    <input type="text" class="form-control" id="TUI_itemNumber" placeholder="請輸入數量" ng-model="data.itemNumber" ng-change="onItemChange()">
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': isItemDollarEmpty}">
                                     <label for="item-dollar">單價</label>
-                                    <input type="text" class="form-control" id="item-dollar" placeholder="請輸入單價" ng-model="data.itemDollar" ng-change="onItemChange()">
+                                    <input type="text" class="form-control" id="TUI_itemDollar" placeholder="請輸入單價" ng-model="data.itemDollar" ng-change="onItemChange()">
                                 </div>
                                 <div class="form-group">
                                     <label for="total-item-dollar">金額</label>
@@ -165,7 +165,7 @@
                                 <div class="form-group date">
                                     <label for="invoicetime">時間</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.time" is-open="isDatePickerOpen" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-change="onDateTimeChange()" readonly>
+                                        <input type="text" class="form-control" id="DUI_dateInput" uib-datepicker-popup="{{format}}" ng-model="data.time" is-open="isDatePickerOpen" datepicker-options="dateOptions" ng-required="true"  ng-change="onDateTimeChange()">
                                         <span class="input-group-btn">
 							            	<button type="button" class="btn btn-default" ng-click="openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
 							        	</span>
@@ -187,15 +187,15 @@
                             <div class="input-wrapper dollar">
                                 <div class="form-group" ng-class="{'has-error': isItemNameEmpty}">
                                     <label for="item-name">品名</label>
-                                    <input type="text" class="form-control" id="item-name" placeholder="請輸入品名" ng-model="data.itemName">
+                                    <input type="text" class="form-control" id="DUI_itemName" placeholder="請輸入品名" ng-model="data.itemName">
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': isItemNumberEmpty}">
                                     <label for="item-number">數量</label>
-                                    <input type="text" class="form-control" id="item-number" placeholder="請輸入數量" ng-model="data.itemNumber" ng-change="onDoubleItemChange()">
+                                    <input type="text" class="form-control" id="DUI_itemNumber" placeholder="請輸入數量" ng-model="data.itemNumber" ng-change="onDoubleItemChange()">
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': isItemDollarEmpty}">
                                     <label for="item-dollar">單價</label>
-                                    <input type="text" class="form-control" id="item-dollar" placeholder="請輸入單價" ng-model="data.itemDollar" ng-change="onDoubleItemChange()">
+                                    <input type="text" class="form-control" id="DUI_itemDollar" placeholder="請輸入單價" ng-model="data.itemDollar" ng-change="onDoubleItemChange()">
                                 </div>
                                 <div class="form-group">
                                     <label for="total-item-dollar">金額</label>
@@ -204,7 +204,7 @@
                             </div>
                         </div>
                         <div class="action">
-                            <button class="btn btn-info btn-orange" type="submit" ng-click="showDoubleInvoiceResult()">預覽</button>
+                            <button class="btn btn-info btn-orange" type="submit" id="DUI_previewButton" ng-click="showDoubleInvoiceResult()">預覽</button>
                             <button class="btn btn-default" type="submit" ng-click="clearInvoiceResult()">清除</button>
                         </div>
                     </div>
@@ -214,10 +214,10 @@
                                 <span>統</span><span>一</span>
                                 <span>發</span><span>票</span>（二聯式）
                             </div>
-                            <div class="invoice-desc">{{invoiceYear}} 年 {{invoiceMonth}} 月 份</div>
-                            <div class="invoice-date">中華民國 <span>{{todayYY}}</span> 年 <span>{{todayMM}}</span> 月 <span>{{todayDD}}</span> 日</div>
+                            <div class="invoice-desc" id="DUI_result_date">{{invoiceYear}} 年 {{invoiceMonth}} 月 份</div>
+                            <div class="invoice-date">中華民國 <span id="DUI_result_year">{{todayYY}}</span> 年 <span id="DUI_result_month">{{todayMM}}</span> 月 <span id="DUI_result_day">{{todayDD}}</span> 日</div>
                             <div class="result-content">
-                                <div class="invoice-buyer">買受人：<span>{{data.company}}</span></div>
+                                <div class="invoice-buyer">買受人：<span id="DUI_result_companyName">{{data.company}}</span></div>
                                 <table class="table table-bordered invoice-table">
                                     <thead>
                                         <tr>
@@ -230,10 +230,10 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="td-answer">{{data.itemName}}</td>
-                                            <td class="td-answer">{{data.itemNumber}}</td>
-                                            <td class="td-answer">{{data.itemDollar | number : fractionSize}}</td>
-                                            <td class="td-answer">{{data.itemTotalDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="DUI_result_itemName">{{data.itemName}}</td>
+                                            <td class="td-answer" id="DUI_result_itemNumber">{{data.itemNumber}}</td>
+                                            <td class="td-answer" id="DUI_result_itemDollar">{{data.itemDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="DUI_result_itemTotalDollar">{{data.itemTotalDollar | number : fractionSize}}</td>
                                             <td></td>
                                         </tr>
                                         <tr ng-repeat="i in [0, 1, 2, 3 , 4 , 5]">
@@ -241,13 +241,13 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3">總計</td>
-                                            <td class="td-answer">{{data.itemTotalDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="DUI_result_totalDollar">{{data.itemTotalDollar | number : fractionSize}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td colspan="4" class="td-word">
-                                                <div class="word-item" ng-repeat="w in totalWord">
-                                                    <span class="word">{{w.numberWord}}</span>
+                                                <div class="word-item" ng-repeat="w in totalWord track by $index">
+                                                    <span class="word" id="DUI_result_numberWord_{{$index}}">{{w.numberWord}}</span>
                                                     <span class="unit">{{w.unit}}</span>
                                                 </div>
                                             </td>
