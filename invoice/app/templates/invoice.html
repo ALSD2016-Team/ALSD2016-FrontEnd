@@ -91,15 +91,15 @@
                                 <span>統</span><span>一</span>
                                 <span>發</span><span>票</span>（三聯式）
                             </div>
-                            <div class="invoice-desc">{{invoiceYear}} 年 {{invoiceMonth}} 月 份</div>
+                            <div class="invoice-desc" id="result_date">{{invoiceYear}} 年 {{invoiceMonth}} 月 份</div>
                             <div class="result-content">
-                                <div class="invoice-buyer">買受人：<span>{{data.company}}</span></div>
+                                <div class="invoice-buyer">買受人：<span id="result_company">{{data.company}}</span></div>
                                 <div class="invoice-meta">
                                     <div class="invoice-companyid">
                                         <span>統一編號：</span>
-                                        <span class="id-item" ng-repeat="id in [0, 1, 2, 3, 4, 5, 6, 7] track by $index">{{data.companyidArray[$index]}}</span>
+                                        <span class="id-item" ng-repeat="id in [0, 1, 2, 3, 4, 5, 6, 7] track by $index" id="result_compony_id_{{$index}}">{{data.companyidArray[$index]}}</span>
                                     </div>
-                                    <div class="invoice-date">中華民國 <span>{{todayYY}}</span> 年 <span>{{todayMM}}</span> 月 <span>{{todayDD}}</span> 日</div>
+                                    <div class="invoice-date">中華民國 <span id="result_year">{{todayYY}}</span> 年 <span id="result_month">{{todayMM}}</span> 月 <span id="result_day">{{todayDD}}</span> 日</div>
                                 </div>
                                 <table class="table table-bordered invoice-table">
                                     <thead>
@@ -113,10 +113,10 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="td-answer">{{data.itemName}}</td>
-                                            <td class="td-answer">{{data.itemNumber}}</td>
-                                            <td class="td-answer">{{data.itemDollar | number : fractionSize}}</td>
-                                            <td class="td-answer">{{data.itemTotalDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="result_item_name">{{data.itemName}}</td>
+                                            <td class="td-answer" id="result_item_count">{{data.itemNumber}}</td>
+                                            <td class="td-answer" id="result_item_dollar">{{data.itemDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="result_item_total_dollar">{{data.itemTotalDollar | number : fractionSize}}</td>
                                             <td></td>
                                         </tr>
                                         <tr ng-repeat="i in [0, 1, 2, 3]">
@@ -124,23 +124,23 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3">銷售額合計</td>
-                                            <td class="td-answer">{{data.salesDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="result_sales_dollar">{{data.salesDollar | number : fractionSize}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td colspan="3">營業稅</td>
-                                            <td class="td-answer">{{data.businessTax | number : fractionSize}}</td>
+                                            <td class="td-answer" id="result_business_tax">{{data.businessTax | number : fractionSize}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td colspan="3">總計</td>
-                                            <td class="td-answer">{{data.totalDollar | number : fractionSize}}</td>
+                                            <td class="td-answer" id="result_total_dollar">{{data.totalDollar | number : fractionSize}}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <td colspan="4" class="td-word">
-                                                <div class="word-item" ng-repeat="w in totalWord">
-                                                    <span class="word">{{w.numberWord}}</span>
+                                                <div class="word-item" ng-repeat="w in totalWord track by $index">
+                                                    <span class="word" id="result_number_word_{{$index}}">{{w.numberWord}}</span>
                                                     <span class="unit">{{w.unit}}</span>
                                                 </div>
                                             </td>
