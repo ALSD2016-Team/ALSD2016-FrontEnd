@@ -15,9 +15,9 @@
                             <div class="input-wrapper company">
                                 <div class="form-group id" ng-class="{'has-error': isCompanyIdEmpty}">
                                     <label for="companyid">統一編號</label>
-                                    <span class="label label-info" ng-show="isCompanyIdSuccess">正確</span>
-                                    <span class="label label-warning" ng-show="isCompanyIdNotFinished">未完成</span>
-                                    <span class="label label-danger" ng-show="isCompanyIdError">錯誤</span>
+                                    <span id="is-company-id-success-message" class="label label-info" ng-show="isCompanyIdSuccess">正確</span>
+                                    <span id="is-company-id-not-finished-message" class="label label-warning" ng-show="isCompanyIdNotFinished">未完成</span>
+                                    <span id="is-company-id-error-message" class="label label-danger" ng-show="isCompanyIdError">錯誤</span>
                                     <input type="text" class="form-control" id="companyid" placeholder="請輸入統一編號" ng-model="data.companyid" ng-change="onCompanyIdChange()">
                                 </div>
                                 <div class="form-group name" ng-class="{'has-error': isCompanyEmpty}">
