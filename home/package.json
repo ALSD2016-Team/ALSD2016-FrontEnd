@@ -23,7 +23,9 @@
     "postupdate-deps": "bower update",
 
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 9090 -c-1 ./app",
+    "start": "http-server -p 8787 -c-1 ./app",
+    "foreve-start" : "forever start ./node_modules/http-server/bin/http-server -p 8787 -c-1 ./app --uid home_web",
+    "foreve-stop" : "forever stopall",
 
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
